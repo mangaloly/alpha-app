@@ -1,0 +1,195 @@
+ion-toolbar {
+    --background: var(--bg);
+}
+
+ion-segment {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(134, 134, 134, 0.05);
+    border-radius: 8px;
+    ion-segment-button {
+        margin: 5px;
+        border-radius: 7px;
+        text-transform: capitalize;
+        font-family: Rubik;
+        font-weight: 600;
+        &.segment-button-checked {
+            --indicator-height: 0px;
+            background: var(--prime);
+            color: white;
+        }
+    }
+}
+
+.bg {
+    --background: var(--bg);
+}
+
+.cardtop {
+    span {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.75em;
+        line-height: 14px;
+        display: block;
+        // text-align: left;
+    }
+}
+
+.card_in {
+    span {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.75em;
+        line-height: 14px;
+        display: block;
+        // text-align: left;
+    }
+}
+
+.cardofinfo {
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.cardofatt {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px rgb(134 134 134 / 5%);
+    border-radius: 6px;
+    padding: 10px;
+    ion-col {
+        border-right: 1px solid #D9D9D9;
+        &:last-child {
+            border: none;
+        }
+    }
+}
+
+.red {
+    color: red;
+}
+
+.lred {
+    color: #CC4D6F;
+}
+
+.green {
+    color: #14FF00;
+}
+
+.yellow {
+    color: #FFD600;
+}
+
+.infoAtted {
+    span {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.75em;
+        line-height: 14px;
+        color: #000000;
+    }
+}
+
+.infoAtted {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.l_reso {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #B0B2B9;
+}
+
+.l_data {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    /* Dark Gray */
+    color: #3D3D3D;
+}
+
+.l_type {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    /* Primary */
+    color: #CC4D6F;
+}
+
+.l_status {
+    border-radius: 5px;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 5px 10px;
+    text-transform: capitalize;
+    &.awaiting {
+        background: #FFF6C4;
+        color: #9f8c29;
+    }
+    &.approved {
+        background: #D3FFD0;
+        color: #0FBC00;
+    }
+    &.declined {
+        background: #FFCCCC;
+        color: #FF0000;
+    }
+}
+
+.innerCardo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.head_info {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    /* Smoke Gray */
+    color: #7987A8;
+}
+
+button.view_att_l {
+    background: #D9D9D9;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.lv_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+}
+
+.vamspan span {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.leave_add {
+    font-size: 24px;
+}

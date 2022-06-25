@@ -1,0 +1,87 @@
+<ion-app>
+    <div class="loader" *ngIf="common.is_loader">
+        <sa-spinner-infinity [size]="100" [thickness]="140" [speed]="100" color="#CC4D6F" secondaryColor="#FAEEF1"></sa-spinner-infinity>
+
+    </div>
+
+    <ng-container *ngIf="!is_splash">
+        <div #splash class="splash-loader">
+            <img src="assets/splash.gif">
+        </div>
+    </ng-container>
+
+
+    <ng-continer *ngIf="is_splash">
+        <ion-menu side="start" max-edge-start="25" content-id="main-content" class="appmenu">
+            <ion-header>
+                <ion-toolbar translucent>
+                    <ion-grid class="sec1">
+                        <ion-row>
+                            <ion-col size="12">
+                                <div class="user_home">
+                                    <img [src]="user?.profile?.image_url">
+                                    <div class="user_h_details">
+                                        <h2 class="">
+                                            Hi {{getFirstname(user?.profile?.st_name)}}
+                                        </h2>
+                                        <span class="home_user_rem_task">
+                                <!-- Today you have <span>9</span> tasks -->
+                                        </span>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-no-padding">
+                <ion-grid class="pl-0 pr-0 pt-0">
+                    <div class="menu_list">
+                        <ion-list>
+                            <ion-menu-toggle>
+                                <ion-item lines="none" [routerLink]="['/']">
+                                    <ion-icon name="home" slot="start"></ion-icon>
+                                    <ion-label>Home</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle>
+                            <ion-menu-toggle>
+                                <ion-item lines="none" [routerLink]="['/task']">
+                                    <ion-icon name="list" slot="start"></ion-icon>
+                                    <ion-label>Task</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle>
+                            <ion-menu-toggle>
+                                <ion-item lines="none" [routerLink]="['/attendance']">
+                                    <ion-icon name="calendar" slot="start"></ion-icon>
+                                    <ion-label>Attendance</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle>
+                            <ion-menu-toggle>
+                                <ion-item lines="none" [routerLink]="['/profile']">
+                                    <ion-icon name="person" slot="start"></ion-icon>
+                                    <ion-label>Profile</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle>
+                            <ion-menu-toggle>
+                                <ion-item lines="none" [routerLink]="['/noti']">
+                                    <ion-icon name="notifications" slot="start"></ion-icon>
+                                    <ion-label>Notifications</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle>
+                            <ion-menu-toggle>
+                                <ion-item lines="none" (click)="logOut()">
+                                    <ion-icon name="log-out" slot="start"></ion-icon>
+                                    <ion-label>Logout</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle>
+
+                        </ion-list>
+                    </div>
+                </ion-grid>
+            </ion-content>
+        </ion-menu>
+        <div class="ion-page" id="main-content">
+            <ion-router-outlet></ion-router-outlet>
+        </div>
+    </ng-continer>
+</ion-app>

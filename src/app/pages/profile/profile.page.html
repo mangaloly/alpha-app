@@ -1,0 +1,183 @@
+<ion-header no-shadow no-border class="ion_header_styles home_page_header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button [routerLink]="['/']">
+                <img src="assets/back.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/noti">
+                <img src="assets/bell.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center sbold ">
+            Profile
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-grid class="sec1">
+        <ion-row>
+            <ion-col size="12">
+                <div class="user_home">
+                    <img [src]="user?.profile?.image_url">
+                    <div class="user_h_details">
+                        <span class="home_username">
+                            Hi {{ getFirstname(user?.profile?.st_name) }},
+                      </span>
+                        <!-- <span class="home_user_rem_task">
+                        Today you have <span>9</span> tasks
+                        </span> -->
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid class="p0 pr_in_tool">
+        <ion-row>
+            <ion-col size="12" class="mt10 p0">
+                <div class="prof_inner_tab">
+                    <div class="prof_inchild" (click)="logOut()">
+                        <img src="assets/logout.svg">
+                    </div>
+                    <div class="prof_inchild" routerLink="/noti">
+                        <img src="assets/noti.svg">
+                    </div>
+                    <div class="prof_inchild" (click)="editProfile()">
+                        <img src="assets/edit.svg">
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+
+    <div class="bgback" *ngIf="!is_skelton">
+        <ion-grid class="sec2">
+
+            <form [formGroup]="loginForm" class="width100 prform">
+                <ion-row>
+                    <ion-col size="12" class="mt10">
+                        <ion-row>
+                            <ion-col size="4" class="p0">
+                                <div class="label_for">
+                                    Email
+                                </div>
+                            </ion-col>
+                            <ion-col size="8" class="p0">
+                                <div class="form_ctrl">
+                                    <input type="text" formControlName="email" [readOnly]="!is_read" class="input2">
+                                    <div *ngIf="submitted && fpf.email.errors" class="form-error-msg" style="display: inline-block;color: red; margin-top:10px;">
+                                        <div class="form-error-msg" *ngIf="fpf.email.errors.required">Email is required</div>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="12" class="mt10">
+                        <ion-row>
+                            <ion-col size="4" class="p0">
+                                <div class="label_for">
+                                    Phone
+                                </div>
+                            </ion-col>
+                            <ion-col size="8" class="p0">
+                                <div class="form_ctrl">
+                                    <input type="text" formControlName="phone" [readOnly]="!is_read" class="input2">
+                                    <div *ngIf="submitted && fpf.phone.errors" class="form-error-msg" style="display: inline-block;color: red; margin-top:10px;">
+                                        <div class="form-error-msg" *ngIf="fpf.phone.errors.required">Phone is required</div>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="12" class="mt10">
+                        <ion-row>
+                            <ion-col size="4" class="p0">
+                                <div class="label_for">
+                                    NGO
+                                </div>
+                            </ion-col>
+                            <ion-col size="8" class="p0">
+                                <div class="form_ctrl">
+                                    <input type="text" formControlName="ngo" [readOnly]="!is_read" class="input2">
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="12" class="mt10">
+                        <ion-row>
+                            <ion-col size="4" class="p0">
+                                <div class="label_for">
+                                    Institute
+                                </div>
+                            </ion-col>
+                            <ion-col size="8" class="p0">
+                                <div class="form_ctrl">
+                                    <input type="text" formControlName="institution" [readOnly]="!is_read" class="input2">
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="12" class="mt10">
+                        <ion-row>
+                            <ion-col size="4" class="p0">
+                                <div class="label_for">
+                                    Department
+                                </div>
+                            </ion-col>
+                            <ion-col size="8" class="p0">
+                                <div class="form_ctrl">
+                                    <input type="text" formControlName="specialization" [readOnly]="!is_read" class="input2">
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="12" class="mt10">
+                        <ion-row>
+                            <ion-col size="4" class="p0">
+                                <div class="label_for">
+                                    Date of Birth
+                                </div>
+                            </ion-col>
+                            <ion-col size="8" class="p0">
+                                <div class="form_ctrl">
+                                    <input type="text" formControlName="dob" [readOnly]="!is_read" class="input2">
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="12" class="mt10">
+                        <ion-row>
+                            <ion-col size="4" class="p0">
+                                <div class="label_for">
+                                    Blood Group
+                                </div>
+                            </ion-col>
+                            <ion-col size="8" class="p0">
+                                <div class="form_ctrl">
+                                    <input type="text" formControlName="blood_group" [readOnly]="!is_read" class="input2">
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+
+
+                </ion-row>
+            </form>
+
+        </ion-grid>
+    </div>
+
+    <ion-row *ngIf="is_skelton">
+        <ion-col size="12" class="mt10"></ion-col>
+        <div class="skltn">
+            <ion-skeleton-text *ngFor="let item of [].constructor(10); let i = index" animated style="width: 100%; height:40px; margin-bottom: 20px; border-radius: 5px;"></ion-skeleton-text>
+        </div>
+    </ion-row>
+
+</ion-content>

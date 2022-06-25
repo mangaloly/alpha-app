@@ -1,0 +1,118 @@
+<ion-header no-shadow no-border class="ion_header_styles home_page_header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <!-- <ion-back-button defaultHref="/" icon="assets/back.svg">
+            </ion-back-button> -->
+            <img (click)="closeModel()" src="assets/close.svg">
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/noti">
+                <img src="assets/bell.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center sbold ">
+            New Leave
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding fullscreen class="bg">
+    <div class="bgback">
+        <ion-grid class="sec2">
+
+            <form [formGroup]="leaveForm" class="width100 prform">
+                <ion-row>
+                    <ion-col size="12" class="mt10 p0">
+                        <ion-row>
+
+                            <ion-col size="12" class="pb10">
+                                <div class="cardOfnewLeave">
+                                    <span class="imgBgGrad">
+                                        <img src="assets/type.svg">
+                                    </span>
+                                    <div class="form_ctrl">
+                                        <!-- <input type="text" formControlName="email" [readOnly]="!is_read" class="input2"> -->
+                                        <ion-item lines="none">
+                                            <ion-label>Type</ion-label>
+                                            <ion-select value="" okText="Okay" cancelText="Dismiss" formControlName="application" interface="action-sheet">
+                                                <ion-select-option value="casual">Casual</ion-select-option>
+                                                <ion-select-option value="sick">Sick</ion-select-option>
+                                            </ion-select>
+                                        </ion-item>
+                                        <div *ngIf="submitted && fpf.application.errors" class="form-error-msg" style="display: inline-block;color: red; margin-top:10px;">
+                                            <div class="form-error-msg" *ngIf="fpf.application.errors.required">Leave Type is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-col>
+
+
+                            <ion-col size="12" class="pb10">
+                                <div class="cardOfnewLeave">
+                                    <span class="imgBgGrad">
+                                        <img src="assets/cause.svg">
+                                    </span>
+                                    <div class="form_ctrl">
+                                        <ion-item lines="none">
+                                            <input type="text" placeholder="Enter Your Reason" formControlName="reason" class="input2">
+                                        </ion-item>
+                                    </div>
+                                </div>
+                            </ion-col>
+
+
+                            <ion-col size="12" class="pb10">
+                                <div class="cardOfnewLeave">
+                                    <span class="imgBgGrad">
+                                        <img src="assets/from.svg">
+                                    </span>
+                                    <div class="form_ctrl">
+                                        <ion-item lines="none">
+                                            <div>
+
+                                                <owl-date-time #fromdatepicker hour12Timer="true" [pickerMode]="'dialog'"></owl-date-time>
+                                                <span [owlDateTimeTrigger]="fromdatepicker" class="trigger">
+                                                    <input type="text" [(ngModel)]="date" placeholder="Start Date" formControlName="start_date" class="input2" [owlDateTime]="fromdatepicker" name="fromDate">
+                                        </span>
+                                            </div>
+                                        </ion-item>
+                                        <div *ngIf="submitted && fpf.start_date.errors" class="form-error-msg" style="display: inline-block;color: red; margin-top:10px;">
+                                            <div class="form-error-msg" *ngIf="fpf.start_date.errors.required">Date is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-col>
+
+                            <ion-col size="12" class="pb10">
+                                <div class="cardOfnewLeave">
+                                    <span class="imgBgGrad">
+                                        <img src="assets/to.svg">
+                                    </span>
+                                    <div class="form_ctrl">
+                                        <ion-item lines="none">
+                                            <owl-date-time #fromdatepicker1 hour12Timer="true" [pickerMode]="'dialog'"></owl-date-time>
+                                            <span [owlDateTimeTrigger]="fromdatepicker1" class="trigger">
+                                                <input type="text" [(ngModel)]="end_date" placeholder="End Date" formControlName="end_date" class="input2" [owlDateTime]="fromdatepicker1" name="fromDate">
+                                                </span>
+                                        </ion-item>
+                                        <div *ngIf="submitted && fpf.end_date.errors" class="form-error-msg" style="display: inline-block;color: red; margin-top:10px;">
+                                            <div class="form-error-msg" *ngIf="fpf.end_date.errors.required">Date is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+
+
+                    <ion-col size="12" class="mt20 p0" (click)="applayLeave()">
+                        <button class="btn1">Apply</button>
+                    </ion-col>
+                </ion-row>
+            </form>
+
+        </ion-grid>
+    </div>
+
+
+</ion-content>

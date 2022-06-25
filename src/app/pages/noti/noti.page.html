@@ -1,0 +1,69 @@
+<ion-header no-shadow no-border class="ion_header_styles home_page_header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button [routerLink]="['/']">
+                <img src="assets/back.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/noti">
+                <img src="assets/bell.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center sbold ">
+            Notifications
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="bg">
+
+    <!-- <ion-grid class="bg mb20 tabs">
+        <ion-row>
+            <ion-col size="12">
+                <ion-segment value="All">
+                    <ion-segment-button value="All">
+                        <ion-label>All</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="Recent">
+                        <ion-label>Recent</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="Unread">
+                        <ion-label>Unread</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-col>
+        </ion-row>
+    </ion-grid> -->
+
+
+
+
+    <div class="bgback mt20">
+        <ion-grid class="bg">
+            <ion-row>
+                <ion-col size="12" *ngFor="let not of notification_list" (click)="openNotification(not)">
+                    <div class="noticlass" [ngClass]="{'read' : not.read_by == ''}">
+                        <div class="imgNoti">
+                            <img src="assets/n4.svg">
+                        </div>
+                        <div class="noti_text">
+                            <div class="info_noti">
+                                <span class="child_info">
+                                {{not.title}}
+                                </span>
+                                <span class="child_intwo">
+                                  {{not.date_entry | timeAgo}}
+                                </span>
+                            </div>
+                            <div class="child_innett">
+                                {{not.description}}
+                            </div>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+</ion-content>

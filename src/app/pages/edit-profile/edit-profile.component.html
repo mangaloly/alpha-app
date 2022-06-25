@@ -1,0 +1,160 @@
+<ion-header no-shadow no-border class="ion_header_styles home_page_header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="closeModel()">
+                <img src="assets/close.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/noti">
+                <img src="assets/bell.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center sbold ">
+            Profile
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-grid class="mb20">
+        <ion-row>
+            <ion-col size="12">
+                <div class="user_home" (click)="openCamera()">
+                    <img [src]="user?.profile?.image_url">
+                    <img src="assets/camera.svg" class="camIn">
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+
+
+    <div class="bgback">
+        <ion-grid class="sec2">
+            <ion-row>
+                <form [formGroup]="loginForm" class="width100 prform">
+                    <ion-row>
+                        <ion-col size="12" class="mt10">
+                            <ion-row>
+                                <ion-col size="4" class="p0">
+                                    <div class="label_for">
+                                        Email
+                                    </div>
+                                </ion-col>
+                                <ion-col size="8" class="p0">
+                                    <div class="form_ctrl">
+                                        <input type="text" formControlName="email" class="input2">
+                                        <div *ngIf="submitted && fpf.email.errors" class="form-error-msg" style="display: inline-block;color: red; margin-top:10px;">
+                                            <div class="form-error-msg" *ngIf="fpf.email.errors.required">Email is required</div>
+                                        </div>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="12" class="mt10">
+                            <ion-row>
+                                <ion-col size="4" class="p0">
+                                    <div class="label_for">
+                                        Phone
+                                    </div>
+                                </ion-col>
+                                <ion-col size="8" class="p0">
+                                    <div class="form_ctrl">
+                                        <input type="text" formControlName="phone" class="input2">
+                                        <div *ngIf="submitted && fpf.phone.errors" class="form-error-msg" style="display: inline-block;color: red; margin-top:10px;">
+                                            <div class="form-error-msg" *ngIf="fpf.phone.errors.required">Phone is required</div>
+                                        </div>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="12" class="mt10">
+                            <ion-row>
+                                <ion-col size="4" class="p0">
+                                    <div class="label_for">
+                                        NGO
+                                    </div>
+                                </ion-col>
+                                <ion-col size="8" class="p0">
+                                    <div class="form_ctrl">
+                                        <input formControlName="ngo" readonly type="text" class="input2">
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="12" class="mt10">
+                            <ion-row>
+                                <ion-col size="4" class="p0">
+                                    <div class="label_for">
+                                        Institute
+                                    </div>
+                                </ion-col>
+                                <ion-col size="8" class="p0">
+                                    <div class="form_ctrl">
+                                        <input type="text" readonly formControlName="institution" class="input2">
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="12" class="mt10">
+                            <ion-row>
+                                <ion-col size="4" class="p0">
+                                    <div class="label_for">
+                                        Department
+                                    </div>
+                                </ion-col>
+                                <ion-col size="8" class="p0">
+                                    <div class="form_ctrl">
+                                        <input type="text" readonly formControlName="specialization" class="input2">
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="12" class="mt10">
+                            <ion-row>
+                                <ion-col size="4" class="p0">
+                                    <div class="label_for">
+                                        Date of Birth
+                                    </div>
+                                </ion-col>
+                                <ion-col size="8" class="p0">
+                                    <div class="form_ctrl">
+                                        <input formControlName="dob" readonly type="text" class="input2">
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="12" class="mt10">
+                            <ion-row>
+                                <ion-col size="4" class="p0">
+                                    <div class="label_for">
+                                        Blood Group
+                                    </div>
+                                </ion-col>
+                                <ion-col size="8" class="p0">
+                                    <div class="form_ctrl">
+                                        <input formControlName="blood_group" readonly type="text" class="input2">
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+
+
+
+                    </ion-row>
+                </form>
+
+            </ion-row>
+        </ion-grid>
+    </div>
+
+
+
+</ion-content>
+
+<ion-footer (click)="update()">
+    <button class="btn1">Update</button>
+</ion-footer>

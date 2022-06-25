@@ -1,0 +1,9 @@
+ionic cordova build android  --prod --release
+
+Password: Alpha@2022!
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore alpha-key.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk alias_name
+
+zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk apk/alpha-chaprone-20-05-22.apk
+
+apksigner sign --ks ace-key.keystore apk/alpha-chaprone-05-20-22.apk 

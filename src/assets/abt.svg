@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="319.996" height="319.996" viewBox="0 0 319.996 319.996">
+  <g id="alert-circle-outline" transform="translate(-48 -48)">
+    <path id="Path_1" data-name="Path 1" d="M352,208A144,144,0,1,0,208,352,144.035,144.035,0,0,0,352,208Z" fill="none" stroke="#e5a6b7" stroke-miterlimit="10" stroke-width="32"/>
+    <path id="Path_2" data-name="Path 2" d="M250.259,164.55l4.3,91.461,4.3-91.461a4.3,4.3,0,0,0-4.342-4.5h0a4.3,4.3,0,0,0-4.26,4.5Z" transform="translate(-46.565 -24.013)" fill="#e5a6b7" stroke="#e5a6b7" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+    <path id="Path_3" data-name="Path 3" d="M251,357.91a15,15,0,1,1,15-15A15,15,0,0,1,251,357.91Z" transform="translate(-43.002 -65.98)" fill="#e5a6b7"/>
+  </g>
+</svg>

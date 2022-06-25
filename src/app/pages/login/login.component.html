@@ -1,0 +1,63 @@
+<ion-content fullscreen padding>
+    <div class="loader" *ngIf="is_loader">
+        <sa-spinner-infinity [size]="100" [thickness]="140" [speed]="100" color="#CC4D6F" secondaryColor="#FAEEF1"></sa-spinner-infinity>
+
+    </div>
+    <ion-grid class="mic login_grid">
+        <ion-row>
+            <ion-col size="12">
+                <img src="assets/logo.png" class="logo mb80">
+                <div>
+                    <h1 class="login_title">
+                        Hey, <br> Login Now.
+                    </h1>
+                    <span class="block sgray">
+                    Login to your account & manage <br> your task
+                  </span>
+                </div>
+            </ion-col>
+            <ion-col size="12" class="mt50">
+
+                <form [formGroup]="loginForm" (keyup.enter)="loginUser()">
+                    <div class="inpt_login">
+                        <div class="inpt_icns">
+                            <img src="assets/user.svg">
+                        </div>
+                        <input type="text" class="input1" formControlName="username" placeholder="Username">
+                        <div *ngIf="submitted && fpf.username.errors" class="form-error-msg">
+                            <div class="form-error-msg" *ngIf="fpf.username.errors.required">Username is required</div>
+                        </div>
+                    </div>
+                    <div class="inpt_login">
+                        <div class="inpt_icns">
+                            <img src="assets/lock.svg">
+                        </div>
+                        <input class="input1" formControlName="password" placeholder="Password" [type]="show ? 'text' : 'password'">
+                        <span class="pass_show" (click)="password()"><img src="assets/eye.svg"></span>
+                        <div *ngIf="submitted && fpf.password.errors" class="form-error-msg">
+                            <div class="form-error-msg" *ngIf="fpf.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                </form>
+            </ion-col>
+            <!-- <ion-col size="12" (click)="forgetPwd()">
+                <span class="block sgray">Forgot Password ?</span>
+            </ion-col> -->
+            <!-- <ion-col size="12" *ngIf="is_forget">
+                <div class="inpt_login">
+                    <div class="inpt_icns">
+                        <img src="assets/user.svg">
+                    </div>
+                    <input type="email" class="input1" [(ngModel)]="email" placeholder="Email">
+                    <div *ngIf="is_forget && is_mail && !email" class="form-error-msg">
+                        <div class="form-error-msg">Email is required</div>
+                    </div>
+                </div>
+            </ion-col> -->
+            <ion-col size="12" class="mt20 pt0">
+                <button class="btn1" (click)="loginUser()">Login</button>
+                <!-- <button class="btn1" (click)="sendMail()" *ngIf="is_forget">Reset Password</button> -->
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

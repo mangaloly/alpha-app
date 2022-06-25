@@ -1,0 +1,7 @@
+{
+  "name": "mezaj-customer-mobile-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

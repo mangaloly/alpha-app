@@ -1,0 +1,560 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+* {
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 17px;
+}
+
+.sbold {
+    font-weight: 600;
+}
+
+.mic {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.block {
+    display: block;
+}
+
+.width100 {
+    width: 100%;
+}
+
+
+/*color*/
+
+.dgray {
+    color: var(--dgray);
+}
+
+.sgray {
+    color: var(--sgray);
+    line-height: 1.4;
+}
+
+
+/*fort*/
+
+.f32 {
+    font-size: 2.286em;
+}
+
+.f28 {
+    font-size: 2em;
+}
+
+.h1 {
+    font-weight: bold;
+}
+
+.fw5 {
+    font-weight: 500;
+}
+
+
+/*poss*/
+
+.mb80 {
+    margin-bottom: 80px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt50 {
+    margin-top: 50px;
+}
+
+.pt0 {
+    padding-top: 0px;
+}
+
+.pb0 {
+    padding-bottom: 0px;
+}
+
+.pb10 {
+    padding-bottom: 10px !important;
+}
+
+.p0 {
+    padding: 0px !important;
+}
+
+.tr {
+    text-align: right;
+}
+
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+
+/*cstm*/
+
+.task_list {
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 2%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+    &.active {
+        ion-text {
+            text-decoration-line: line-through;
+            color: #838383;
+        }
+    }
+    ion-text {
+        font-family: Rubik;
+        display: block;
+        padding-left: 15px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 19px;
+        /* identical to box height */
+    }
+    ion-checkbox {
+        --border-radius: 50%;
+        --border-width: 2px;
+        --border-color: var(--prime);
+    }
+}
+
+.card1 {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.login_grid {
+    padding: 0 30px;
+}
+
+.inpt_login {
+    position: relative;
+    input {
+        padding-left: 40px;
+    }
+}
+
+.inpt_icns {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    pointer-events: none;
+}
+
+.pass_show {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+}
+
+.login_title {
+    font-size: 2.286em;
+    color: var(--dgray);
+    font-weight: 700;
+}
+
+.input1 {
+    background: #F6F6F6;
+    border: 2px solid transparent;
+    padding: 18px;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    outline: none;
+    &:focus {
+        border-color: var(--prime);
+    }
+}
+
+.btn1 {
+    background: var(--grad);
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
+}
+
+.btn2 {
+    background: var(--prime);
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    width: 100%;
+    height: 60px;
+}
+
+.btn3 {
+    background: var(--prime);
+    border-radius: 9px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    width: 100%;
+    height: 50px;
+}
+
+.punch-out {
+    background-color: var(--dgray);
+    padding: 3px;
+    border-radius: 12px;
+    align-items: center;
+}
+
+.punch-time {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ion-color-primary-contrast);
+    letter-spacing: 0.8px;
+}
+
+.cardofinfo {
+    padding: 0 !important;
+}
+
+ion-button {
+    height: 75px !important;
+}
+
+ion-grid {
+    padding: 0 10px;
+}
+
+.header-md::after {
+    display: none !important;
+}
+
+.home_username {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: 0.02em;
+}
+
+.user_home {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 20px;
+    .home_user_rem_task {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        letter-spacing: 0.02em;
+        color: #999999;
+        display: block;
+        span {
+            font-family: Rubik;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: 0.02em;
+            color: #CC4D6F;
+        }
+    }
+}
+
+.text_2 {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height */
+    color: #1D1D1D;
+}
+
+ion-tab-bar {
+    --background: var(--prime);
+    --border: 0;
+    .tab-selected {
+        ion-icon {
+            filter: brightness(3);
+        }
+    }
+}
+
+.bgback {
+    // background: var(--prime);
+}
+
+.sec1 {
+    background: white;
+    border-radius: 0 0 25px 25px;
+    padding-bottom: 30px;
+}
+
+.sec2 {
+    background: var(--bg);
+    border-radius: 0 0 35px 35px;
+    padding-bottom: 30px;
+}
+
+.rem_brad {
+    border-radius: 0px;
+}
+
+ion-grid.pr_in_tool {
+    margin-top: -50px;
+    position: relative;
+    z-index: -1;
+    .prof_inner_tab {
+        background: var(--prime);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20px 0;
+        border-radius: 0 0 30px 30px;
+        padding-top: 65px;
+    }
+}
+
+.label_for {
+    font-size: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+}
+
+.input2 {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 2%);
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    padding: 0px 10px;
+    height: 40px;
+    outline: none;
+}
+
+.footer-md::before {
+    display: none;
+}
+
+.bg {
+    background: var(--bg);
+}
+
+.noticlass {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(134, 134, 134, 0.05);
+    border-radius: 8px;
+    padding: 5px 10px 5px 5px;
+    &.read {
+        opacity: 0.7;
+    }
+    img {
+        display: block;
+    }
+    .noti_text {
+        width: calc(100% - 50px);
+        padding-left: 10px;
+    }
+    .child_info {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1em;
+        line-height: 17px;
+        /* identical to box height */
+        /* Dark Gray */
+        color: #3D3D3D;
+    }
+    .child_intwo {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.75em;
+        line-height: 1em;
+        /* Smoke Gray */
+        color: #7987A8;
+    }
+    .info_noti {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .child_innett {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.75em;
+        line-height: 1em;
+        /* Smoke Gray */
+        color: #7987A8;
+    }
+    .imgNoti {
+        background-color: var(--noti);
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+    }
+}
+
+ion-tab-bar::before {
+    background-image: url(assets/btm.svg);
+    content: "";
+}
+
+.tabs ion-label {
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: capitalize;
+}
+
+
+/* Change the white to any color */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: black !important;
+}
+
+.prform {
+    padding: 0 10px;
+}
+
+.tabColor {
+    background: var(--prime);
+    width: 100%;
+    height: 46px;
+    position: relative;
+    top: 0;
+}
+
+.bgTab {
+    background: #fbf1f4;
+    width: 100%;
+    height: 46px;
+    position: relative;
+    top: 0;
+    border-radius: 0px 0px 40px 40px;
+}
+
+.owl-dt-control-arrow-button .owl-dt-control-button-content {
+    color: black !important;
+}
+
+ion-skeleton-text {
+    --background-rgb: 230, 40, 40;
+}
+
+.loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1002;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_home img {
+    width: 75px;
+    height: 75px;
+    border-radius: 20px;
+    overflow: hidden;
+    object-fit: cover;
+}

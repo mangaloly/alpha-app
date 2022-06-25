@@ -1,0 +1,100 @@
+<ion-header no-shadow no-border class="ion_header_styles home_page_header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button [routerLink]="['/']">
+                <img src="assets/back.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/noti">
+                <img src="assets/bell.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center sbold ">
+            Task
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="bg">
+
+    <ion-grid class="sec2 rem_brad pb10">
+        <ion-row>
+            <ion-col size="12">
+                <div class="user_home">
+
+                    <div class="user_h_details">
+                        <span class="home_username">
+                   {{active_date |date:'MMMM dd'}}
+                      </span>
+                        <span class="home_user_rem_task">
+                         <span>{{today_task_count}}</span> tasks {{active_date == current_date ? 'today' :(active_date |date:'EEE dd')}}
+                        </span>
+                    </div>
+                    <div (click)="openCalendar()">
+
+                        <input [(ngModel)]="date" style="display: none;" [owlDateTime]="fromdatepicker" placeholder="Date Time" class="form-control" name="fromDate">
+                        <owl-date-time #fromdatepicker pickerType="calendar" (afterPickerClosed)="filterDate($event)"></owl-date-time>
+                        <span [owlDateTimeTrigger]="fromdatepicker" class="trigger">
+                            <img src="assets/calbig.svg">
+                </span>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+    <ion-segment scrollable value="{{active_date}}">
+        <ion-segment-button *ngFor="let date of date_array" (click)="filterDate(date)" value="{{date}}">
+            <ion-text class="day_se">{{date |date:'EEE'}}</ion-text>
+            <ion-text class="date_se">{{date |date:'dd'}}</ion-text>
+        </ion-segment-button>
+    </ion-segment>
+
+
+    <ion-grid class="sec2">
+        <ion-row>
+
+            <ion-col size="12" class="mt10">
+                <ion-row>
+                    <ion-col size="6" class="p0 tl">
+                        <!-- <ion-text class="text_2">{{active_date == today_date ? ' Today’s Tasks ' :(active_date |date:'dd')+'th'}} ({{today_task_count}})</ion-text> -->
+                    </ion-col>
+                    <ion-col size="6" class="p0 tr">
+                        <!-- <img src="assets/dot.svg"> -->
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="12" class="mt10" *ngIf="task_list && task_list.length > 0">
+                <div class="card_task_list">
+                    <div class="task_list" *ngFor="let task of task_list">
+                        <ion-checkbox color="primary" [(ngModel)]="task.check_status" value="{{task?.checklist_id}}" id="check_{{task?.checklist_id}}" (ionChange)="taskCompeleted($event)"></ion-checkbox>
+                        <ion-text (click)="openCheck(task)">{{task.checklist}}</ion-text>
+                    </div>
+                </div>
+            </ion-col>
+
+            <ion-col size="12" class="mt10" *ngIf="task_list && task_list.length <= 0">
+                <p>You dont have any task today!</p>
+            </ion-col>
+        </ion-row>
+
+
+
+
+
+    </ion-grid>
+
+
+
+    <ion-infinite-scroll threshold="300px" (ionInfinite)="getTasks()">
+        <ion-infinite-scroll-content loadingSpinner="bubbles">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+</ion-content>

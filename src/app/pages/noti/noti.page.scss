@@ -1,0 +1,24 @@
+ion-toolbar {
+    --background: var(--bg);
+}
+
+ion-segment {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(134, 134, 134, 0.05);
+    border-radius: 8px;
+    ion-segment-button {
+        margin: 5px;
+        border-radius: 7px;
+        color: var(--prime);
+        text-transform: capitalize;
+        &.segment-button-checked {
+            --indicator-height: 0px;
+            background: var(--prime);
+            color: white;
+        }
+    }
+}
+
+.bg {
+    --background: var(--bg);
+}

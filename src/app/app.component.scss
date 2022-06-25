@@ -1,0 +1,38 @@
+.appmenu {
+    span.home_user_rem_task {
+        font-size: 12px !important;
+        color: white;
+        span {
+            color: white !important;
+        }
+    }
+    ion-grid.sec1 {
+        padding: 25px;
+        background: var(--prime);
+    }
+    .user_home h2 {
+        padding: 0;
+        margin: 0;
+        font-size: 18px;
+        color: white;
+    }
+    ion-icon {
+        font-size: 1.5rem;
+        color: var(--prime);
+    }
+    ion-label {
+        font-size: 18px;
+        font-family: 'Rubik';
+        font-weight: 500;
+        color: var(--ion-color-dark);
+    }
+}
+
+.splash-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fff;
+    background: #fff;
+}

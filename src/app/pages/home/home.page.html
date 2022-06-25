@@ -1,0 +1,118 @@
+<ion-header no-shadow no-border class="ion_header_styles home_page_header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="openMenu()">
+                <img src="assets/menu.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/noti">
+                <img src="assets/bell.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center sbold sgray">
+            {{current_date|date:'dd MMM yyyy'}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+    <ion-grid class="sec1">
+        <ion-row>
+            <ion-col size="12">
+                <div class="user_home">
+                    <img [src]="user?.profile?.image_url">
+                    <div class="user_h_details">
+                        <span class="home_username">
+                          Hi <strong>{{ getFirstname(user?.profile?.st_name) }}</strong>,
+                        </span>
+                        <span class="home_user_rem_task">
+                          Today you have <span>{{dashboard_data.tdy_task_count}}</span> tasks
+                        </span>
+                    </div>
+                </div>
+            </ion-col>
+            <ion-col size="12" class="mt10" *ngIf="!common.punch_status || common.punch_status == 'punchout'">
+                <button class="btn2" (click)="openCamera('in')">PUNCH IN</button>
+            </ion-col>
+            <ion-col size="12" class="mt10" *ngIf="common.punch_status == 'punchin'">
+
+                <ion-row class="punch-out">
+                    <ion-col class="6">
+                        <span class="punch-time"> {{ common.left_time * 1000 | date:'HH:mm:ss':'UTC' }}</span>
+                    </ion-col>
+                    <ion-col class="6">
+                        <button class="btn3" (click)="openCamera('out')">PUNCH OUT</button>
+                    </ion-col>
+                </ion-row>
+
+            </ion-col>
+
+            <ion-col size="12" class="mt10">
+                <ion-row>
+                    <ion-col size="6" class="p0 tl">
+                        <ion-text class="text_2">Activity</ion-text>
+                    </ion-col>
+                    <ion-col size="6" class="p0 tr">
+                        <!-- <img src="assets/dot.svg"> -->
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="12" class="mt10">
+                <div class="card1">
+                    <div style="display: block;">
+                        <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+                        </canvas>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+
+    <div class="bgback" *ngIf="!is_skelton">
+        <ion-grid class="sec2">
+            <ion-row>
+                <ion-col size="12" class="mt10">
+                    <ion-row>
+                        <ion-col size="6" class="p0 tl">
+                            <ion-text class="text_2">Today’s Tasks ({{dashboard_data.tdy_task_count}})</ion-text>
+                        </ion-col>
+                        <ion-col size="6" class="p0 tr">
+                            <!-- <img src="assets/dot.svg"> -->
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+
+                <ion-col size="12" class="mt10">
+                    <div class="card_task_list" *ngIf="dashboard_data && dashboard_data.tdy_task">
+                        <div class="task_list" *ngFor="let task of dashboard_data.tdy_task">
+                            <ion-checkbox color="primary" [(ngModel)]="task.check_status" value="{{task.task_id}}" (ionChange)="taskCompeleted($event)"></ion-checkbox>
+                            <ion-text>{{task.title}}</ion-text>
+                        </div>
+
+
+
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <ion-row>
+        <ion-col size="12" class="mt10">
+            <div class="skltn" *ngIf="is_skelton">
+                <ion-skeleton-text *ngFor="let item of [].constructor(10); let i = index" animated style="width: 100%; height:40px; margin-bottom: 20px; border-radius: 5px;"></ion-skeleton-text>
+            </div>
+        </ion-col>
+    </ion-row>
+
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+</ion-content>

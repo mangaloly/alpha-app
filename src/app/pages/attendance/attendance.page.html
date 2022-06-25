@@ -1,0 +1,218 @@
+<ion-header no-shadow no-border class="ion_header_styles home_page_header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <!-- <ion-back-button defaultHref="/" icon="assets/back.svg">
+            </ion-back-button> -->
+            <img [routerLink]="['/']" src="assets/back.svg">
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/noti">
+                <img src="assets/bell.svg">
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center sbold ">
+            Attendance
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="bg">
+
+    <ion-grid class="bg mb20">
+        <ion-row>
+            <ion-col size="12">
+                <ion-segment value="{{active_tab}}" (ionChange)="getTab($event)">
+                    <ion-segment-button value="Attendance">
+                        <ion-label>Attendance</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="Leave">
+                        <ion-label>Leave</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+
+
+    <div class="bgback" *ngIf="active_tab == 'Attendance'">
+        <ion-grid class="bg">
+            <ion-row>
+                <ion-col size="12" class="pb0 cardtop">
+                    <div class="cardofinfo">
+                        <ion-row>
+                            <ion-col size="3" class="tl">
+                                <span>
+                              Date
+                            </span>
+                            </ion-col>
+                            <ion-col size="3" class="tc">
+                                <span>
+                              Punch In
+                            </span>
+                            </ion-col>
+                            <ion-col size="3" class="tc">
+                                <span>
+                              Punch Out
+                            </span>
+                            </ion-col>
+                            <ion-col size="3" class="tc">
+                                <span>
+                              Total Hrs
+                            </span>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </ion-col>
+
+                <ng-container *ngIf="attendence_details && attendence_details.length > 0 && !is_skelton">
+                    <ion-col size="12" class="card_in" *ngFor="let attend of attendence_details">
+                        <div class="cardofatt vamspan">
+                            <ion-row class="tl">
+                                <ion-col size="3">
+                                    <span>
+                             {{attend.punchin |date:'dd/MM/yyyy'}}
+                          </span>
+                                </ion-col>
+                                <ion-col size="3" class="tc">
+                                    <span [ngClass]="getClass(attend.punchin |date:'hh:mm' ,attend.punchin |date:'a')">
+                              {{attend.punchin |date:'h:mm a'}}
+                          </span>
+                                </ion-col>
+                                <ion-col size="3" class="tc">
+                                    <span [ngClass]="getPunchOut(attend.punchout |date:'h:mm:ss a')">
+                                    {{attend.punchout |date:'h:mm a'}}
+                          </span>
+                                </ion-col>
+                                <ion-col size="3" class="tc">
+                                    <span>
+                            {{diff_minutes(attend.punchin,attend.punchout) | myDuration}}
+                          </span>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </ion-col>
+                </ng-container>
+            </ion-row>
+        </ion-grid>
+
+
+        <div class="bgback mt20">
+            <ion-grid class="bg">
+                <ion-row>
+                    <ion-col size="6">
+                        <div class="infoAtted">
+                            <ion-icon class="red" name="ellipse"></ion-icon>
+                            <span>Late Login</span>
+                        </div>
+                    </ion-col>
+                    <ion-col size="6">
+                        <div class="infoAtted">
+                            <ion-icon class="lred" name="ellipse"></ion-icon>
+                            <span>Half Day Leave</span>
+                        </div>
+                    </ion-col>
+                    <ion-col size="6">
+                        <div class="infoAtted">
+                            <ion-icon class="green" name="ellipse"></ion-icon>
+                            <span>Early Login</span>
+                        </div>
+                    </ion-col>
+                    <ion-col size="6">
+                        <div class="infoAtted">
+                            <ion-icon class="yellow" name="ellipse"></ion-icon>
+                            <span>Early Logout</span>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+
+    </div>
+
+    <div class="bgback" *ngIf="active_tab == 'Leave' && !is_skelton">
+        <ion-grid class="bg">
+            <ion-row>
+                <ion-col size="12" class="pb0 cardtop" *ngFor="let property of leaves | keyvalue">
+                    <div class="cardofinfo">
+                        <ion-row>
+                            <ion-col size="12" class="tl">
+                                <span class="head_info">
+                                 {{property.key}}
+                            </span>
+
+                                <ion-col size="12" class="card_in" *ngFor="let leave of property.value">
+                                    <div class="cardofatt">
+                                        <ion-row class="tl">
+                                            <ion-col size="6">
+                                                <div class="lv_inner">
+                                                    <div class="l_reso">
+                                                        {{getLeaveType(leave)}}
+                                                    </div>
+                                                    <div class="l_data">{{leave.start_date |date:'dd MMM yyyy'}}</div>
+                                                    <div class="l_type">{{leave.application}}</div>
+                                                </div>
+                                            </ion-col>
+                                            <ion-col size="6" class="tc">
+                                                <div class="innerCardo">
+                                                    <button class="l_status " [ngClass]="getstatusClass(leave.status)">
+                                                   {{leave.status |titlecase}}
+                                                </button>
+                                                    <button class="view_att_l">
+                                                    <img src="assets/arr.svg">
+                                                </button>
+                                                </div>
+                                            </ion-col>
+
+
+                                        </ion-row>
+                                    </div>
+                                </ion-col>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </ion-col>
+
+                <!-- <ion-col size="12" class="pb0 cardtop">
+                    <div class="cardofinfo">
+                        <ion-row>
+                            <span>October 2021</span>
+                            <ion-col size="12" class="tl">
+                                <ion-text>Half day application</ion-text>
+                                <span>Awaiting</span>
+                                <span>Wed 13 2021</span>
+                                <ion-text>casual</ion-text>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </ion-col> -->
+
+
+
+            </ion-row>
+
+
+        </ion-grid>
+
+
+
+        <ion-fab vertical="bottom" class="leave_add" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="applayLeave()">
+                <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+
+
+    </div>
+
+
+    <ion-row *ngIf="is_skelton">
+        <ion-col size="12">
+            <div class="skltn">
+                <ion-skeleton-text *ngFor="let item of [].constructor(10); let i = index" animated style="width: 100%; height:40px; margin-bottom: 20px; border-radius: 5px;"></ion-skeleton-text>
+            </div>
+        </ion-col>
+    </ion-row>
+
+</ion-content>

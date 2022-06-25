@@ -1,0 +1,28 @@
+<ion-content fullscreen padding>
+    <ion-grid class="mic login_grid">
+        <ion-row>
+            <ion-col size="12" class="tc">
+                <img src="assets/em.svg" class="logo">
+                <div>
+                    <h1 class="f32 dgray">
+                        Check your email
+                    </h1>
+                    <span class="block sgray">
+                      We have sent a password recover
+                      instructions to your email.
+                </span>
+                </div>
+                <div class="mt20">
+                    <button class="btn1" (click)="openLogin()">Login</button>
+                </div>
+            </ion-col>
+
+
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer>
+    <p>
+        <span class="frt" (click)="openLogin()">Did not recieve the email? Check your spam filter, or</span> <span class="prt" (click)="openForgotPassword()">try another email address</span>
+    </p>
+</ion-footer>

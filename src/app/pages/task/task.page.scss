@@ -1,0 +1,68 @@
+.user_home {
+    justify-content: space-between;
+}
+
+.bg {
+  --background: var(--bg);
+}
+
+ion-toolbar {
+    --background: var(--bg);
+}
+
+ion-segment {
+    background: var(--bg);
+}
+
+ion-segment-button {
+    background: #FFFFFF;
+    box-shadow: 0px 5px 15px rgb(141 141 141 / 3%);
+    border-radius: 13px;
+    margin: 8px;
+    min-height: 85px;
+    justify-content: center;
+    &::before {
+      display: none;
+    }
+    .date_se {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.375em;
+        line-height: 26px;
+        text-align: center;
+        color: #1D1D1D;
+        text-transform: capitalize;
+    }
+    .day_se {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875em;
+        line-height: 17px;
+        text-align: center;
+        color: #999999;
+        text-transform: capitalize;
+    }
+    &.segment-button-checked {
+        --indicator-height: 0px;
+        background: var(--prime);
+        box-shadow: 0 3px 5px rgb(204 77 111 / 50%);
+        border-color: transparent;
+        .date_se {
+            color: white;
+        }
+        .day_se {
+            color: #E5A6B7;
+        }
+    }
+    &.today {
+        border: 1px solid var(--prime);
+    }
+}
+
+ion-checkbox {
+  &.checkbox-checked + ion-text {
+    text-decoration: line-through;
+    color: #838383;
+  }
+}
